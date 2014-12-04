@@ -15,6 +15,10 @@
 		8C1927451A30B77300B3584D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1927441A30B77300B3584D /* Images.xcassets */; };
 		8C1927481A30B77300B3584D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C1927461A30B77300B3584D /* LaunchScreen.xib */; };
 		8C1927541A30B77300B3584D /* galleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927531A30B77300B3584D /* galleryTests.m */; };
+		8C19275F1A30BC6D00B3584D /* GalleryCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C19275E1A30BC6D00B3584D /* GalleryCommunicator.m */; };
+		8C1927631A30C1EA00B3584D /* ImageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927621A30C1EA00B3584D /* ImageBuilder.m */; };
+		8C1927681A30C70100B3584D /* GalleryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927671A30C70100B3584D /* GalleryManager.m */; };
+		8C19276A1A30D30300B3584D /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927691A30D30300B3584D /* Image.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,16 @@
 		8C19274D1A30B77300B3584D /* galleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = galleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1927521A30B77300B3584D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C1927531A30B77300B3584D /* galleryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = galleryTests.m; sourceTree = "<group>"; };
+		8C19275D1A30BB7300B3584D /* GalleryCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryCommunicatorDelegate.h; sourceTree = "<group>"; };
+		8C19275E1A30BC6D00B3584D /* GalleryCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryCommunicator.m; sourceTree = "<group>"; };
+		8C1927601A30BCB700B3584D /* GalleryCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryCommunicator.h; sourceTree = "<group>"; };
+		8C1927611A30C18400B3584D /* ImageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBuilder.h; sourceTree = "<group>"; };
+		8C1927621A30C1EA00B3584D /* ImageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBuilder.m; sourceTree = "<group>"; };
+		8C1927641A30C24800B3584D /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		8C1927651A30C68F00B3584D /* GalleryManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryManagerDelegate.h; sourceTree = "<group>"; };
+		8C1927661A30C6EB00B3584D /* GalleryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryManager.h; sourceTree = "<group>"; };
+		8C1927671A30C70100B3584D /* GalleryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryManager.m; sourceTree = "<group>"; };
+		8C1927691A30D30300B3584D /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +98,22 @@
 		8C1927331A30B77200B3584D /* gallery */ = {
 			isa = PBXGroup;
 			children = (
+				8C19275D1A30BB7300B3584D /* GalleryCommunicatorDelegate.h */,
+				8C1927651A30C68F00B3584D /* GalleryManagerDelegate.h */,
+				8C19275E1A30BC6D00B3584D /* GalleryCommunicator.m */,
+				8C1927601A30BCB700B3584D /* GalleryCommunicator.h */,
+				8C1927661A30C6EB00B3584D /* GalleryManager.h */,
+				8C1927671A30C70100B3584D /* GalleryManager.m */,
 				8C1927381A30B77300B3584D /* AppDelegate.h */,
 				8C1927391A30B77300B3584D /* AppDelegate.m */,
 				8C19273B1A30B77300B3584D /* MasterViewController.h */,
 				8C19273C1A30B77300B3584D /* MasterViewController.m */,
 				8C19273E1A30B77300B3584D /* DetailViewController.h */,
 				8C19273F1A30B77300B3584D /* DetailViewController.m */,
+				8C1927641A30C24800B3584D /* Image.h */,
+				8C1927691A30D30300B3584D /* Image.m */,
+				8C1927611A30C18400B3584D /* ImageBuilder.h */,
+				8C1927621A30C1EA00B3584D /* ImageBuilder.m */,
 				8C1927411A30B77300B3584D /* Main.storyboard */,
 				8C1927441A30B77300B3584D /* Images.xcassets */,
 				8C1927461A30B77300B3584D /* LaunchScreen.xib */,
@@ -225,7 +249,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C19273A1A30B77300B3584D /* AppDelegate.m in Sources */,
+				8C19275F1A30BC6D00B3584D /* GalleryCommunicator.m in Sources */,
 				8C19273D1A30B77300B3584D /* MasterViewController.m in Sources */,
+				8C1927681A30C70100B3584D /* GalleryManager.m in Sources */,
+				8C1927631A30C1EA00B3584D /* ImageBuilder.m in Sources */,
+				8C19276A1A30D30300B3584D /* Image.m in Sources */,
 				8C1927371A30B77300B3584D /* main.m in Sources */,
 				8C1927401A30B77300B3584D /* DetailViewController.m in Sources */,
 			);
@@ -352,6 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = gallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -362,6 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = gallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

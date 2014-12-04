@@ -32,7 +32,20 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-}
+    
+    _manager = [[GalleryManager alloc] init];
+    _manager.communicator = [[GalleryCommunicator alloc] init];
+    _manager.communicator.delegate = _manager;
+    _manager.delegate = self;
+    
+    [_manager search:@"ipad iphone"];
+    /*
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(search:)
+                                                 name:@"kCLAuthorizationStatusAuthorized"
+                                               object:nil];
+     */
+     }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -47,6 +60,23 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
+- (void)search:(NSNotification *)notification
+{
+    [_manager search:@"ipad"];
+}
+
+#pragma mark - GalleryManagerDelegate
+
+- (void)didReceiveImages:(NSArray *)images {
+    _images = images;
+    [self.tableView reloadData];
+}
+
+- (void)fetchingImagesFailedWithError:(NSError *)error {
+    NSLog(@"Error %@; %@", error, [error localizedDescription]);
+}
+
 
 #pragma mark - Segues
 
@@ -68,29 +98,24 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return _images.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    //NSDate *object = self.objects[indexPath.row];
+    //cell.textLabel.text = [object description];
+    
+    Image *image = _images[indexPath.row];
+    cell.textLabel.text = [image url];
+    
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
+    return NO;
 }
 
 @end

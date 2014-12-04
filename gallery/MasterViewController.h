@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "Image.h"
+#import "GalleryManager.h"
+#import "GalleryCommunicator.h"
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <GalleryManagerDelegate> {
+    NSArray *_images;
+    GalleryManager *_manager;
+}
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
-
 
 @end
 
