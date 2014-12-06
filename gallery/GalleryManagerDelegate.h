@@ -10,7 +10,7 @@
 
 @protocol GalleryManagerDelegate <NSObject>
 
-- (void)didReceiveImages:(NSArray *)images;
+- (void)didReceiveImages;
 - (void)fetchingImagesFailedWithError:(NSError *)error;
 
 @end

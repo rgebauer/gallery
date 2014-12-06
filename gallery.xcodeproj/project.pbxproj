@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		8C1927371A30B77300B3584D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927361A30B77300B3584D /* main.m */; };
 		8C19273A1A30B77300B3584D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927391A30B77300B3584D /* AppDelegate.m */; };
-		8C19273D1A30B77300B3584D /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C19273C1A30B77300B3584D /* MasterViewController.m */; };
-		8C1927401A30B77300B3584D /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C19273F1A30B77300B3584D /* DetailViewController.m */; };
-		8C1927431A30B77300B3584D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C1927411A30B77300B3584D /* Main.storyboard */; };
 		8C1927451A30B77300B3584D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1927441A30B77300B3584D /* Images.xcassets */; };
 		8C1927481A30B77300B3584D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C1927461A30B77300B3584D /* LaunchScreen.xib */; };
 		8C1927541A30B77300B3584D /* galleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927531A30B77300B3584D /* galleryTests.m */; };
@@ -19,6 +16,10 @@
 		8C1927631A30C1EA00B3584D /* ImageBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927621A30C1EA00B3584D /* ImageBuilder.m */; };
 		8C1927681A30C70100B3584D /* GalleryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927671A30C70100B3584D /* GalleryManager.m */; };
 		8C19276A1A30D30300B3584D /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1927691A30D30300B3584D /* Image.m */; };
+		8C38827D1A31A78E00141E4E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C38827B1A31A78E00141E4E /* ViewController.m */; };
+		8C3882B21A31B45600141E4E /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3882B11A31B45600141E4E /* ImageCell.m */; };
+		8C4D634C1A31D47F0072A1AF /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4D634B1A31D47F0072A1AF /* ScrollViewController.m */; };
+		8C4E583F1A3309D5000B3194 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4E583D1A3309D5000B3194 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +38,6 @@
 		8C1927361A30B77300B3584D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C1927381A30B77300B3584D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8C1927391A30B77300B3584D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8C19273B1A30B77300B3584D /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		8C19273C1A30B77300B3584D /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		8C19273E1A30B77300B3584D /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		8C19273F1A30B77300B3584D /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		8C1927421A30B77300B3584D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C1927441A30B77300B3584D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8C1927471A30B77300B3584D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8C19274D1A30B77300B3584D /* galleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = galleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +53,13 @@
 		8C1927661A30C6EB00B3584D /* GalleryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryManager.h; sourceTree = "<group>"; };
 		8C1927671A30C70100B3584D /* GalleryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryManager.m; sourceTree = "<group>"; };
 		8C1927691A30D30300B3584D /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
+		8C38827A1A31A78E00141E4E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8C38827B1A31A78E00141E4E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8C3882B01A31B45600141E4E /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
+		8C3882B11A31B45600141E4E /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
+		8C4D634A1A31D47F0072A1AF /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
+		8C4D634B1A31D47F0072A1AF /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
+		8C4E583E1A3309D5000B3194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,12 @@
 		8C1927331A30B77200B3584D /* gallery */ = {
 			isa = PBXGroup;
 			children = (
+				8C4D634A1A31D47F0072A1AF /* ScrollViewController.h */,
+				8C4D634B1A31D47F0072A1AF /* ScrollViewController.m */,
+				8C3882B01A31B45600141E4E /* ImageCell.h */,
+				8C3882B11A31B45600141E4E /* ImageCell.m */,
+				8C38827A1A31A78E00141E4E /* ViewController.h */,
+				8C38827B1A31A78E00141E4E /* ViewController.m */,
 				8C19275D1A30BB7300B3584D /* GalleryCommunicatorDelegate.h */,
 				8C1927651A30C68F00B3584D /* GalleryManagerDelegate.h */,
 				8C19275E1A30BC6D00B3584D /* GalleryCommunicator.m */,
@@ -106,15 +115,11 @@
 				8C1927671A30C70100B3584D /* GalleryManager.m */,
 				8C1927381A30B77300B3584D /* AppDelegate.h */,
 				8C1927391A30B77300B3584D /* AppDelegate.m */,
-				8C19273B1A30B77300B3584D /* MasterViewController.h */,
-				8C19273C1A30B77300B3584D /* MasterViewController.m */,
-				8C19273E1A30B77300B3584D /* DetailViewController.h */,
-				8C19273F1A30B77300B3584D /* DetailViewController.m */,
 				8C1927641A30C24800B3584D /* Image.h */,
 				8C1927691A30D30300B3584D /* Image.m */,
 				8C1927611A30C18400B3584D /* ImageBuilder.h */,
 				8C1927621A30C1EA00B3584D /* ImageBuilder.m */,
-				8C1927411A30B77300B3584D /* Main.storyboard */,
+				8C4E583D1A3309D5000B3194 /* MainStoryboard.storyboard */,
 				8C1927441A30B77300B3584D /* Images.xcassets */,
 				8C1927461A30B77300B3584D /* LaunchScreen.xib */,
 				8C1927341A30B77300B3584D /* Supporting Files */,
@@ -228,7 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C1927431A30B77300B3584D /* Main.storyboard in Resources */,
+				8C4E583F1A3309D5000B3194 /* MainStoryboard.storyboard in Resources */,
 				8C1927481A30B77300B3584D /* LaunchScreen.xib in Resources */,
 				8C1927451A30B77300B3584D /* Images.xcassets in Resources */,
 			);
@@ -249,13 +254,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C19273A1A30B77300B3584D /* AppDelegate.m in Sources */,
+				8C3882B21A31B45600141E4E /* ImageCell.m in Sources */,
 				8C19275F1A30BC6D00B3584D /* GalleryCommunicator.m in Sources */,
-				8C19273D1A30B77300B3584D /* MasterViewController.m in Sources */,
+				8C4D634C1A31D47F0072A1AF /* ScrollViewController.m in Sources */,
+				8C38827D1A31A78E00141E4E /* ViewController.m in Sources */,
 				8C1927681A30C70100B3584D /* GalleryManager.m in Sources */,
 				8C1927631A30C1EA00B3584D /* ImageBuilder.m in Sources */,
 				8C19276A1A30D30300B3584D /* Image.m in Sources */,
 				8C1927371A30B77300B3584D /* main.m in Sources */,
-				8C1927401A30B77300B3584D /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,20 +284,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8C1927411A30B77300B3584D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C1927421A30B77300B3584D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8C1927461A30B77300B3584D /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8C1927471A30B77300B3584D /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		8C4E583D1A3309D5000B3194 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C4E583E1A3309D5000B3194 /* Base */,
+			);
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -383,6 +389,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -394,6 +401,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -450,6 +458,7 @@
 				8C1927591A30B77300B3584D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C19275A1A30B77300B3584D /* Build configuration list for PBXNativeTarget "galleryTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +467,7 @@
 				8C19275C1A30B77300B3584D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

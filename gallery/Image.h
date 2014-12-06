@@ -10,10 +10,12 @@
 #define gallery_Image_h
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Image : NSObject
 
 @property (strong, nonatomic) NSString* url;
+@property (strong, nonatomic) UIImage* uiImage;
 
 @end
 #endif

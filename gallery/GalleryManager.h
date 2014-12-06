@@ -20,6 +20,8 @@
 @property (strong, nonatomic) GalleryCommunicator *communicator;
 @property (weak, nonatomic) id<GalleryManagerDelegate> delegate;
 
+@property (strong, nonatomic) NSArray* images;
+
 - (void)search:(NSString*)what;
 @end
 

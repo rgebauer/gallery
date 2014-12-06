@@ -25,13 +25,15 @@
 - (void)receiveFinished:(NSData *)data
 {
     NSError *_error = nil;
-    NSArray *images = [ImageBuilder imagesFromJSON:data error:&_error];
+    _images = [ImageBuilder imagesFromJSON:data error:&_error];
     
     if (_error != nil) {
         [self.delegate fetchingImagesFailedWithError:_error];
         
-    } else {
-        [self.delegate didReceiveImages:images];
+    }
+    else
+    {
+        [self.delegate didReceiveImages];
     }
 }
 
