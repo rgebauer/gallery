@@ -43,31 +43,27 @@
     
     [super viewDidLoad];
     
-    [self.activityIndicator startAnimating];
-    _searchBar.text = @"ios developer";
+    [self.activityIndicator stopAnimating];
+    //_searchBar.text = @"ios developer";
     
     _manager = [[GalleryManager alloc] init];
     _manager.communicator = [[GalleryCommunicator alloc] init];
     _manager.communicator.delegate = _manager;
     _manager.delegate = self;
     
-    [_manager search:_searchBar.text];
+    //[_manager search:_searchBar.text];
 }
 
-
-- (BOOL)prefersStatusBarHidden {
-    return NO;
-}
 
 #pragma mark - search bar delegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-     NSLog(@"Search text did changed: %@", searchText);
+     //NSLog(@"Search text did changed: %@", searchText);
      //[_manager search:searchText];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-     NSLog(@"Search text button clicked: %@", searchBar.text);
+     //NSLog(@"Search text button clicked: %@", searchBar.text);
     [self.activityIndicator startAnimating];
     [_manager search:searchBar.text];
     

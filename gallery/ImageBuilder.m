@@ -14,7 +14,7 @@
 +(NSArray *)imagesFromJSON:(NSData *)data error:(NSError **)error
 {
     NSString *unformattedData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    //NSLog(@"%@", unformattedData);
+    NSLog(@"%@", unformattedData);
     //NSLog(@"%d", [NSJSONSerialization isValidJSONObject:data]);
     
     NSMutableArray *ret = [[NSMutableArray alloc] init];
@@ -38,7 +38,7 @@
             NSRange r2 = [substr rangeOfCharacterFromSet: [NSCharacterSet characterSetWithCharactersInString:@"\""]];
             NSString *s1 = [substr substringToIndex:r2.location-1];
             
-            NSLog(@"%@", s1);
+            //NSLog(@"%@", s1);
             
             Image *image = [[Image alloc] init];
             image.url = s1;

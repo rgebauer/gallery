@@ -61,9 +61,6 @@
    
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return NO;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -244,7 +241,21 @@
 }
 
 - (IBAction)close:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    CGRect newFrame;
+    newFrame.origin = _startPoint; // CGPointMake(windowBounds.size.width/2.0f, windowBounds.size.height/2.0f);
+    newFrame.size = CGSizeMake(100.0f, 100.0f);
+   
+    [UIView animateWithDuration:0.5f delay:0.0f options:0 animations:^{
+        _imageView.frame = newFrame;
+        _imageView.alpha = 0.0f;
+        CGAffineTransform transf = CGAffineTransformIdentity;
+        _imageView.transform = CGAffineTransformScale(transf, 0.1f, 0.1f);
+        
+    } completion:^(BOOL finished) {
+        [self dismissViewControllerAnimated:NO completion:NULL];
+    }];
+
 }
 
 - (IBAction)share:(id)sender {
