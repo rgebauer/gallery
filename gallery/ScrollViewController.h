@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIImageView *imageView;
 
 @property NSInteger imageIndex;
+@property CGPoint startPoint;
 @property (nonatomic, weak) GalleryManager* manager;
 
 - (IBAction)close:(id)sender;

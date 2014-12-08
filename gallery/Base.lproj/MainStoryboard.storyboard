@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -124,7 +123,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar opaque="NO" alpha="0.49999999999999961" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qkS-rQ-3gh">
+                            <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k60-K9-afO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EZl-cv-WaA" id="jze-q3-yes"/>
+                                </connections>
+                            </scrollView>
+                            <navigationBar opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkS-rQ-3gh">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
@@ -142,22 +147,16 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k60-K9-afO">
-                                <rect key="frame" x="0.0" y="64" width="600" height="556"/>
-                                <connections>
-                                    <outlet property="delegate" destination="EZl-cv-WaA" id="jze-q3-yes"/>
-                                </connections>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="k60-K9-afO" secondAttribute="trailing" id="EyW-j8-QHs"/>
-                            <constraint firstItem="qkS-rQ-3gh" firstAttribute="top" secondItem="ULj-Lr-NQr" secondAttribute="bottom" id="Iv6-LQ-5BP"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="k60-K9-afO" secondAttribute="bottom" constant="-20" id="Ot2-jb-VYh"/>
-                            <constraint firstItem="qkS-rQ-3gh" firstAttribute="bottom" secondItem="k60-K9-afO" secondAttribute="top" id="Y0C-HP-qnG"/>
-                            <constraint firstItem="qkS-rQ-3gh" firstAttribute="leading" secondItem="k60-K9-afO" secondAttribute="leading" id="cpl-nB-7wM"/>
-                            <constraint firstItem="k60-K9-afO" firstAttribute="leading" secondItem="Fci-KE-0kL" secondAttribute="leading" id="fjA-hw-7bH"/>
-                            <constraint firstItem="qkS-rQ-3gh" firstAttribute="trailing" secondItem="k60-K9-afO" secondAttribute="trailing" id="zcl-F1-bd8"/>
+                            <constraint firstItem="k60-K9-afO" firstAttribute="leading" secondItem="Fci-KE-0kL" secondAttribute="leading" id="6g4-gy-N2i"/>
+                            <constraint firstItem="qkS-rQ-3gh" firstAttribute="leading" secondItem="k60-K9-afO" secondAttribute="leading" id="9dI-z7-p9J"/>
+                            <constraint firstItem="qkS-rQ-3gh" firstAttribute="top" secondItem="ULj-Lr-NQr" secondAttribute="bottom" id="M6D-vW-JCr"/>
+                            <constraint firstItem="k60-K9-afO" firstAttribute="top" secondItem="Fci-KE-0kL" secondAttribute="top" id="MgO-Tn-0Vb"/>
+                            <constraint firstItem="qkS-rQ-3gh" firstAttribute="trailing" secondItem="k60-K9-afO" secondAttribute="trailing" id="Wdf-03-p5e"/>
+                            <constraint firstItem="k60-K9-afO" firstAttribute="bottom" secondItem="0X4-nL-5k7" secondAttribute="top" id="fYI-iW-dpq"/>
+                            <constraint firstAttribute="trailing" secondItem="qkS-rQ-3gh" secondAttribute="trailing" id="zeB-8L-3Gj"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

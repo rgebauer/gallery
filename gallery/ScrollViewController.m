@@ -81,16 +81,16 @@
     [self centerScrollViewContents];
     
     
-    CGRect windowBounds = [[UIScreen mainScreen] bounds];
+    //CGRect windowBounds = [[UIScreen mainScreen] bounds];
     
     CGRect newFrame;
-    newFrame.origin = CGPointMake(windowBounds.size.width/2.0f, windowBounds.size.height/2.0f);
-    newFrame.size = CGSizeMake(10.0f, 10.0f);
+    newFrame.origin = _startPoint; // CGPointMake(windowBounds.size.width/2.0f, windowBounds.size.height/2.0f);
+    newFrame.size = CGSizeMake(100.0f, 100.0f);
     
     _imageView.frame = newFrame;
     _imageView.alpha = 0.0f;
     
-    [UIView animateWithDuration:0.4f delay:0.0f options:0 animations:^{
+    [UIView animateWithDuration:0.5f delay:0.0f options:0 animations:^{
         _imageView.frame = [self centerFrameFromImage:_imageView.image];
        _imageView.alpha = 1.0f;
         CGAffineTransform transf = CGAffineTransformIdentity;
@@ -108,7 +108,7 @@
 }
 
 - (void)centerScrollViewContents {
-    CGSize boundsSize = self.scrollView.bounds.size; //self.scrollView.bounds.size;
+    CGSize boundsSize = self.scrollView.bounds.size;
     CGRect contentsFrame = self.imageView.frame;
     
     NSLog(@"centerScrollViewContents boundsSize: width %f height %f", boundsSize.width, boundsSize.height);
@@ -205,7 +205,7 @@
 }
 #pragma mark - Hide and show Navigation bar
 - (void) hideNavigationBar {
-   _navigationBar.alpha = 0.5f;
+   _navigationBar.alpha = 0.8f;
    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
        _navigationBar.alpha = 0.0f;
    } completion:^(BOOL finished) {
@@ -216,7 +216,7 @@
 - (void) showNavigationBar {
     _navigationBar.alpha = 0.0f;
     [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        _navigationBar.alpha = 0.5f;
+        _navigationBar.alpha = 0.8f;
     } completion:^(BOOL finished) {
     }];
 }

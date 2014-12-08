@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomSegue : UIStoryboardSegue
-
+@property CGPoint startPoint;
 @end

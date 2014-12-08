@@ -16,6 +16,7 @@
 #import "ViewController.h"
 #import "ImageCell.h"
 #import "ScrollViewController.h"
+#import "CustomSegue.h"
 
 @interface ViewController () <UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GalleryManagerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
     GalleryManager *_manager;
@@ -128,11 +129,19 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showImage"])
     {
+        /*
+        if([segue isKindOfClass:[CustomSegue class]]) {
+            ImageCell* imageCell = (ImageCell*)sender;
+            ((CustomSegue *)segue).startPoint = imageCell.center;
+        }
+         */
+        
         NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
         ScrollViewController *destViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [indexPaths objectAtIndex:0];
        
         destViewController.imageIndex = indexPath.row;
+        destViewController.startPoint =[(ImageCell*)sender center];
         destViewController.manager = _manager;
     
         [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
