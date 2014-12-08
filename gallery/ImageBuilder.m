@@ -14,9 +14,8 @@
 +(NSArray *)imagesFromJSON:(NSData *)data error:(NSError **)error
 {
     NSString *unformattedData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    NSLog(@"%@", unformattedData);
-    
-    NSLog(@"%d", [NSJSONSerialization isValidJSONObject:data]);
+    //NSLog(@"%@", unformattedData);
+    //NSLog(@"%d", [NSJSONSerialization isValidJSONObject:data]);
     
     NSMutableArray *ret = [[NSMutableArray alloc] init];
     
@@ -50,17 +49,19 @@
             dispatch_group_enter(group);
            
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                __block NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    image.uiImage = [UIImage imageWithData:imageData]; //image.uiImage = [UIImage imageNamed:@"photo-frame-2"];
-                    
-                    [ret addObject:image];
-                    dispatch_group_leave(group);
-                });
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                        if (imageData)
+                        {
+                            image.uiImage = [UIImage imageWithData:imageData];
+                            if (image.uiImage) {
+                                [ret addObject:image];
+                            }
+                        }
+                        dispatch_group_leave(group);
+                    });
             });
-            
-            
         }
         else
         {

@@ -12,11 +12,15 @@
 @interface ScrollViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UINavigationBar *navigationBar;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @property NSInteger imageIndex;
 @property (nonatomic, weak) GalleryManager* manager;
 
 - (IBAction)close:(id)sender;
 - (IBAction)share:(id)sender;
+
+- (CGRect) centerFrameFromImage:(UIImage*) image;
 
 @end

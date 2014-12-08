@@ -42,7 +42,7 @@
     
     [super viewDidLoad];
     
-    _searchBar.text = @"ipad iphone";
+    _searchBar.text = @"ios developer";
     
     _manager = [[GalleryManager alloc] init];
     _manager.communicator = [[GalleryCommunicator alloc] init];
@@ -50,14 +50,6 @@
     _manager.delegate = self;
     
     [_manager search:_searchBar.text];
-    /*
-     [[NSNotificationCenter defaultCenter] addObserver:self
-     selector:@selector(search:)
-     name:@"kCLAuthorizationStatusAuthorized"
-     object:nil];
-     */
-
-
 }
 
 
@@ -75,6 +67,12 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
      NSLog(@"Search text button clicked: %@", searchBar.text);
      [_manager search:searchBar.text];
+    
+    [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+      [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - GalleryManagerDelegate
@@ -103,6 +101,9 @@
     Image *image = _manager.images[indexPath.row];
     [cell setImage:image];
     
+    cell.contentMode = UIViewContentModeScaleAspectFill;
+    cell.clipsToBounds = YES;
+    
     return cell;
 }
 
@@ -120,11 +121,6 @@
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-     Image *image = _images[indexPath.row];
-    self.detailView = [[ScrollViewController alloc] init];    //TODO init with image and images
-     *self.navigationController pushViewController:_detailView animated:YES];
-     */
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -133,14 +129,11 @@
         NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
         ScrollViewController *destViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [indexPaths objectAtIndex:0];
-        
-        //TODO
+       
         destViewController.imageIndex = indexPath.row;
         destViewController.manager = _manager;
-        
-        //destViewController.recipeImageName = [recipeImages[indexPath.section] objectAtIndex:indexPath.row];
-        
-        [self.collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+        [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
     }
 }
 

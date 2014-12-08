@@ -11,8 +11,9 @@
 
 #import "Image.h"
 
-@interface ScrollViewController ()
-@property (nonatomic, strong) UIImageView *imageView;
+@interface ScrollViewController () {
+   
+}
 
 - (void)centerScrollViewContents;
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
@@ -22,26 +23,22 @@
 @implementation ScrollViewController
 
 - (void)viewDidLoad {
-    /*
-    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-        // iOS 7
-        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-    } else {
-        // iOS 6
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    }
-     */
     [super viewDidLoad];
     
     // 1
     Image* img = _manager.images[self.imageIndex];
     UIImage *image = img.uiImage;
     self.imageView = [[UIImageView alloc] initWithImage:image];
-    self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
+    self.imageView.frame = [self centerFrameFromImage:image];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     [self.scrollView addSubview:self.imageView];
+    [self.scrollView setZoomScale:1.0f animated:YES];
     
     // 2
-    self.scrollView.contentSize = image.size;
+    self.navigationBar.alpha = 0.f;
+    
+    NSLog(@"viewDidLoad image.size: width %f height %f", image.size.width, image.size.height);
     
     // 3
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewDoubleTapped:)];
@@ -76,24 +73,43 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // 4
-    CGRect scrollViewFrame = self.scrollView.frame;
-    CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
-    CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
-    CGFloat minScale = MIN(scaleWidth, scaleHeight);
-    self.scrollView.minimumZoomScale = minScale;
-    
-    // 5
+    self.scrollView.minimumZoomScale = 1.0f;
     self.scrollView.maximumZoomScale = 4.0f;
-    self.scrollView.zoomScale = minScale;
-    
-    // 6
+    self.scrollView.zoomScale = 1;
     [self centerScrollViewContents];
+    
+    
+    CGRect windowBounds = [[UIScreen mainScreen] bounds];
+    
+    CGRect newFrame;
+    newFrame.origin = CGPointMake(windowBounds.size.width/2.0f, windowBounds.size.height/2.0f);
+    newFrame.size = CGSizeMake(10.0f, 10.0f);
+    
+    _imageView.frame = newFrame;
+    _imageView.alpha = 0.0f;
+    
+    [UIView animateWithDuration:0.4f delay:0.0f options:0 animations:^{
+        _imageView.frame = [self centerFrameFromImage:_imageView.image];
+       _imageView.alpha = 1.0f;
+        CGAffineTransform transf = CGAffineTransformIdentity;
+        _imageView.transform = CGAffineTransformScale(transf, 1.0f, 1.0f);
+        
+    } completion:^(BOOL finished) {
+        [self showNavigationBar];
+    }];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self hideNavigationBar];
 }
 
 - (void)centerScrollViewContents {
-    CGSize boundsSize = self.scrollView.bounds.size;
+    CGSize boundsSize = self.scrollView.bounds.size; //self.scrollView.bounds.size;
     CGRect contentsFrame = self.imageView.frame;
+    
+    NSLog(@"centerScrollViewContents boundsSize: width %f height %f", boundsSize.width, boundsSize.height);
     
     if (contentsFrame.size.width < boundsSize.width) {
         contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
@@ -108,6 +124,8 @@
     }
     
     self.imageView.frame = contentsFrame;
+    
+    NSLog(@"centerScrollViewContents self.imageView.frame: x %f y %f width %f height %f", self.imageView.frame.origin.x, self.imageView.frame.origin.y,self.imageView.frame.size.width, self.imageView.frame.size.height);
 }
 
 - (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer {
@@ -132,7 +150,6 @@
     [self.scrollView zoomToRect:rectToZoomTo animated:YES];
 }
 
-
 - (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer {
     // Zoom out slightly, capping at the minimum zoom scale specified by the scroll view
     CGFloat newZoomScale = self.scrollView.zoomScale / 1.5f;
@@ -148,10 +165,11 @@
         Image* img = _manager.images[self.imageIndex];
         UIImage *image = img.uiImage;
         self.imageView = [[UIImageView alloc] initWithImage:image];
-        self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
-     
+        self.imageView.frame = [self centerFrameFromImage:image];
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [[self.scrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self.scrollView addSubview:self.imageView];
+        [self.scrollView setZoomScale:1.0f animated:YES];
     }
 }
 
@@ -162,20 +180,20 @@
         Image* img = _manager.images[self.imageIndex];
         UIImage *image = img.uiImage;
         self.imageView = [[UIImageView alloc] initWithImage:image];
-        self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size=image.size};
-        
+        self.imageView.frame = [self centerFrameFromImage:image];
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [[self.scrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self.scrollView addSubview:self.imageView];
+        [self.scrollView setZoomScale:1.0f animated:YES];
     }
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    // Return the view that you want to zoom
     return self.imageView;
 }
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    // The scroll view has zoomed, so you need to re-center the contents
+    //[self showNavigationBar];
     [self centerScrollViewContents];
 }
 
@@ -183,22 +201,57 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
    
 }
+#pragma mark - Hide and show Navigation bar
+- (void) hideNavigationBar {
+   _navigationBar.alpha = 0.5f;
+   [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+       _navigationBar.alpha = 0.0f;
+   } completion:^(BOOL finished) {
+       //[_navigationBar removeFromSuperview];
+   }];
+}
 
+- (void) showNavigationBar {
+    _navigationBar.alpha = 0.0f;
+    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        _navigationBar.alpha = 0.5f;
+    } completion:^(BOOL finished) {
+    }];
+}
+
+#pragma mark Helpers
+- (CGRect) centerFrameFromImage:(UIImage*) image {
+    if(!image) return CGRectZero;
+    
+    CGRect windowBounds = self.view.bounds;
+    
+    NSLog(@"centerFrameFromImage windowBounds: width %f height %f", windowBounds.size.width, windowBounds.size.height);
+    
+    CGSize newImageSize = [self imageResizeBaseOnWidth:windowBounds
+                           .size.width oldWidth:image
+                           .size.width oldHeight:image.size.height];
+    
+    newImageSize.height = MIN(windowBounds.size.height,newImageSize.height);
+    return CGRectMake(0.0f, windowBounds.size.height/2 - newImageSize.height/2, newImageSize.width, newImageSize.height);
+}
+
+- (CGSize)imageResizeBaseOnWidth:(CGFloat) newWidth oldWidth:(CGFloat) oldWidth oldHeight:(CGFloat)oldHeight {
+    CGFloat scaleFactor = newWidth / oldWidth;
+    CGFloat newHeight = oldHeight * scaleFactor;
+    return CGSizeMake(newWidth, newHeight);
+}
 
 - (IBAction)close:(id)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (IBAction)share:(id)sender {
+    if (self.imageIndex >= _manager.images.count || self.imageIndex < 0)
+        return;
     
-    //Image* image = [pageImages objectAtIndex:_pageControl.currentPage];
-    //NSURL *url = [[NSURL alloc] initWithString:image.url];
-    //NSArray *objectsToShare = @[url];
+    Image* image = _manager.images[self.imageIndex];
     
-    NSMutableArray * objectsToShare = [[NSMutableArray alloc]init];
-    [objectsToShare addObject:self.imageView];
-    
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[image.uiImage] applicationActivities:nil];
     
     [self presentViewController:controller animated:YES completion:nil];
 }

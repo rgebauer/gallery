@@ -20,6 +20,10 @@
 		8C3882B21A31B45600141E4E /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3882B11A31B45600141E4E /* ImageCell.m */; };
 		8C4D634C1A31D47F0072A1AF /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4D634B1A31D47F0072A1AF /* ScrollViewController.m */; };
 		8C4E583F1A3309D5000B3194 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4E583D1A3309D5000B3194 /* MainStoryboard.storyboard */; };
+		8CC309C31A344D4B00DAE992 /* CustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC309C21A344D4B00DAE992 /* CustomSegue.m */; };
+		8CC309C51A34669800DAE992 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC309C41A34669800DAE992 /* CoreGraphics.framework */; };
+		8CC309C71A3466AC00DAE992 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC309C61A3466AC00DAE992 /* UIKit.framework */; };
+		8CC309C91A3466CD00DAE992 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC309C81A3466CD00DAE992 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,11 @@
 		8C4D634A1A31D47F0072A1AF /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
 		8C4D634B1A31D47F0072A1AF /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
 		8C4E583E1A3309D5000B3194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8CC309C11A344D4B00DAE992 /* CustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegue.h; sourceTree = "<group>"; };
+		8CC309C21A344D4B00DAE992 /* CustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSegue.m; sourceTree = "<group>"; };
+		8CC309C41A34669800DAE992 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8CC309C61A3466AC00DAE992 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8CC309C81A3466CD00DAE992 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC309C91A3466CD00DAE992 /* Foundation.framework in Frameworks */,
+				8CC309C71A3466AC00DAE992 /* UIKit.framework in Frameworks */,
+				8CC309C51A34669800DAE992 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +95,9 @@
 		8C1927281A30B77200B3584D = {
 			isa = PBXGroup;
 			children = (
+				8CC309C81A3466CD00DAE992 /* Foundation.framework */,
+				8CC309C61A3466AC00DAE992 /* UIKit.framework */,
+				8CC309C41A34669800DAE992 /* CoreGraphics.framework */,
 				8C1927331A30B77200B3584D /* gallery */,
 				8C1927501A30B77300B3584D /* galleryTests */,
 				8C1927321A30B77200B3584D /* Products */,
@@ -119,6 +134,8 @@
 				8C1927691A30D30300B3584D /* Image.m */,
 				8C1927611A30C18400B3584D /* ImageBuilder.h */,
 				8C1927621A30C1EA00B3584D /* ImageBuilder.m */,
+				8CC309C11A344D4B00DAE992 /* CustomSegue.h */,
+				8CC309C21A344D4B00DAE992 /* CustomSegue.m */,
 				8C4E583D1A3309D5000B3194 /* MainStoryboard.storyboard */,
 				8C1927441A30B77300B3584D /* Images.xcassets */,
 				8C1927461A30B77300B3584D /* LaunchScreen.xib */,
@@ -257,6 +274,7 @@
 				8C3882B21A31B45600141E4E /* ImageCell.m in Sources */,
 				8C19275F1A30BC6D00B3584D /* GalleryCommunicator.m in Sources */,
 				8C4D634C1A31D47F0072A1AF /* ScrollViewController.m in Sources */,
+				8CC309C31A344D4B00DAE992 /* CustomSegue.m in Sources */,
 				8C38827D1A31A78E00141E4E /* ViewController.m in Sources */,
 				8C1927681A30C70100B3584D /* GalleryManager.m in Sources */,
 				8C1927631A30C1EA00B3584D /* ImageBuilder.m in Sources */,
