@@ -42,6 +42,7 @@
     
     [super viewDidLoad];
     
+    [self.activityIndicator startAnimating];
     _searchBar.text = @"ios developer";
     
     _manager = [[GalleryManager alloc] init];
@@ -66,13 +67,14 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
      NSLog(@"Search text button clicked: %@", searchBar.text);
-     [_manager search:searchBar.text];
+    [self.activityIndicator startAnimating];
+    [_manager search:searchBar.text];
     
     [self.searchBar resignFirstResponder];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-      [self.searchBar resignFirstResponder];
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - GalleryManagerDelegate
@@ -80,7 +82,7 @@
 - (void)didReceiveImages{
     [self.collectionView setContentOffset:CGPointZero animated:NO];
     [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-   
+    [self.activityIndicator performSelectorOnMainThread:@selector(stopAnimating) withObject:nil waitUntilDone:NO];
     
 }
 
