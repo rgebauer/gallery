@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X1X-de-tba">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Search Bar-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="top" misplaced="YES" placeholder="Hledej obrazek" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-vU-e1s">
+                            <searchBar contentMode="top" placeholder="Hledej obrazek" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vzq-vU-e1s">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Q8d-z4-HI3"/>
@@ -31,7 +31,7 @@
                                     <outlet property="delegate" destination="2" id="dQW-eU-gs5"/>
                                 </connections>
                             </searchBar>
-                            <collectionView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x9o-VS-o0k">
+                            <collectionView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x9o-VS-o0k">
                                 <rect key="frame" x="0.0" y="64" width="600" height="667"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="667" id="bgI-6x-Bze"/>
@@ -96,7 +96,6 @@
                             <constraint firstItem="vzq-vU-e1s" firstAttribute="trailing" secondItem="x9o-VS-o0k" secondAttribute="trailing" id="qOw-7l-gvQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Bar" id="ber-58-3kQ"/>
                     <connections>
                         <outlet property="collectionView" destination="x9o-VS-o0k" id="Dvy-ro-b1f"/>
                         <outlet property="searchBar" destination="vzq-vU-e1s" id="1V6-xF-5af"/>
@@ -104,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788" y="110"/>
+            <point key="canvasLocation" x="976" y="110"/>
         </scene>
         <!--Scroll View Controller-->
         <scene sceneID="rmp-j9-xdc">
@@ -162,25 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hC-VS-aL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2454" y="112"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="U4e-TX-TRb">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X1X-de-tba" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Nn-3X-T7Q">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="bHQ-eQ-pzm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IbX-WR-2ZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="976" y="110"/>
+            <point key="canvasLocation" x="1642" y="112"/>
         </scene>
     </scenes>
 </document>

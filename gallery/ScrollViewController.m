@@ -72,6 +72,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+  
+    self.navigationBar.alpha = 0.f;
     
     self.scrollView.minimumZoomScale = 1.0f;
     self.scrollView.maximumZoomScale = 4.0f;
@@ -204,7 +206,7 @@
 #pragma mark - Hide and show Navigation bar
 - (void) hideNavigationBar {
    _navigationBar.alpha = 0.5f;
-   [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+   [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
        _navigationBar.alpha = 0.0f;
    } completion:^(BOOL finished) {
        //[_navigationBar removeFromSuperview];
@@ -213,7 +215,7 @@
 
 - (void) showNavigationBar {
     _navigationBar.alpha = 0.0f;
-    [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
+    [UIView animateWithDuration:0.4f delay:0.0f options:UIViewAnimationOptionAllowUserInteraction animations:^{
         _navigationBar.alpha = 0.5f;
     } completion:^(BOOL finished) {
     }];
