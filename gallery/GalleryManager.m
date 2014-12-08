@@ -15,9 +15,9 @@
 
 @implementation GalleryManager
 
-- (void)search:(NSString*)what
+- (void)search:(NSString*)what from:(NSInteger)from;
 {
-    [self.communicator searchImages:what];
+    [self.communicator searchImages:what from:from];
 }
 
 #pragma mark - GalleryCommunicatorDelegate
@@ -27,9 +27,9 @@
     NSError *_error = nil;
     _images = [ImageBuilder imagesFromJSON:data error:&_error];
     
-    if (_error != nil) {
+    if (_error != nil)
+    {
         [self.delegate fetchingImagesFailedWithError:_error];
-        
     }
     else
     {

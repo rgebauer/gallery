@@ -10,6 +10,8 @@
 
 @interface ImageCell ()
 @property(nonatomic, weak) IBOutlet UIImageView *imageView;
+@property(nonatomic, weak) IBOutlet UILabel *detailText;
+
 @end
 
 @implementation ImageCell
@@ -18,6 +20,7 @@
 {
     _image = image;
     self.imageView.image = _image.uiImage;
+    self.detailText.text = _image.altText;
 }
 
 @end

@@ -44,15 +44,27 @@
                                                         <constraint firstAttribute="height" constant="200" id="4um-bd-BPO"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vdP-90-4kp">
+                                                    <rect key="frame" x="0.0" y="187" width="320" height="17"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="2rU-Bd-Ncq" firstAttribute="leading" secondItem="mi1-w9-7CJ" secondAttribute="leading" id="3YE-49-lVs"/>
                                             <constraint firstAttribute="trailing" secondItem="2rU-Bd-Ncq" secondAttribute="trailing" id="GbY-Es-KtC"/>
+                                            <constraint firstItem="vdP-90-4kp" firstAttribute="bottom" secondItem="mi1-w9-7CJ" secondAttribute="bottomMargin" constant="2" id="HG6-xh-ygj"/>
+                                            <constraint firstAttribute="centerX" secondItem="vdP-90-4kp" secondAttribute="centerX" id="IMw-de-XnU"/>
+                                            <constraint firstItem="vdP-90-4kp" firstAttribute="width" secondItem="2rU-Bd-Ncq" secondAttribute="width" id="gF1-uP-ICm"/>
                                             <constraint firstItem="2rU-Bd-Ncq" firstAttribute="top" secondItem="mi1-w9-7CJ" secondAttribute="topMargin" id="haO-ie-4E5"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="detailText" destination="vdP-90-4kp" id="xXR-fg-KK6"/>
                                             <outlet property="imageView" destination="2rU-Bd-Ncq" id="Ssc-fx-hLc"/>
                                             <segue destination="EZl-cv-WaA" kind="custom" identifier="showImage" customClass="CustomSegue" id="jCB-b6-dZd"/>
                                         </connections>

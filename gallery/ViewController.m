@@ -20,6 +20,7 @@
 
 @interface ViewController () <UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GalleryManagerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
     GalleryManager *_manager;
+    NSInteger fromIndex;
 }
 
 @property(nonatomic, weak) IBOutlet UICollectionView *collectionView;
@@ -45,11 +46,13 @@
     
     [self.activityIndicator stopAnimating];
     //_searchBar.text = @"ios developer";
+    fromIndex = 1;
     
     _manager = [[GalleryManager alloc] init];
     _manager.communicator = [[GalleryCommunicator alloc] init];
     _manager.communicator.delegate = _manager;
     _manager.delegate = self;
+    
     
     //[_manager search:_searchBar.text];
 }
@@ -64,8 +67,9 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
      //NSLog(@"Search text button clicked: %@", searchBar.text);
+    fromIndex = 1;
     [self.activityIndicator startAnimating];
-    [_manager search:searchBar.text];
+    [_manager search:searchBar.text from:fromIndex];
     
     [self.searchBar resignFirstResponder];
 }
@@ -77,10 +81,13 @@
 #pragma mark - GalleryManagerDelegate
 
 - (void)didReceiveImages{
-    [self.collectionView setContentOffset:CGPointZero animated:NO];
-    [self.collectionView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-    [self.activityIndicator performSelectorOnMainThread:@selector(stopAnimating) withObject:nil waitUntilDone:NO];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView setContentOffset:CGPointZero animated:NO];
+        [self.collectionView reloadData];
+        [self.activityIndicator stopAnimating];
+        
+    });
 }
 
 - (void)fetchingImagesFailedWithError:(NSError *)error {
@@ -103,8 +110,18 @@
     cell.contentMode = UIViewContentModeScaleAspectFill;
     cell.clipsToBounds = YES;
     
+    //TODO do infinite scrolling one direction (range offsets from 1-10000,...) + remove previous image items
+    if (indexPath.item == _manager.images.count- 1 && fromIndex < 9980)
+    {
+        fromIndex += 20;
+        [self.activityIndicator startAnimating];
+        [_manager search:_searchBar.text from:fromIndex];
+    }
+   
+    
     return cell;
 }
+
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {

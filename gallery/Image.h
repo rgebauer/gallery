@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSString* url;
 @property (strong, nonatomic) UIImage* uiImage;
+@property (strong, nonatomic) NSString* altText;
 
 @end
 #endif

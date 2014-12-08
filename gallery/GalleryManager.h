@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) NSArray* images;
 
-- (void)search:(NSString*)what;
+- (void)search:(NSString*)what from:(NSInteger)from;
 @end
 
 #endif

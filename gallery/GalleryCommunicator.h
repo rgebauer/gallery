@@ -16,7 +16,7 @@
 @interface GalleryCommunicator : NSObject
 @property (weak, nonatomic) id<GalleryCommunicatorDelegate> delegate;
 
-- (void)searchImages:(NSString*)what;
+- (void)searchImages:(NSString*)what from:(NSInteger)from;
 @end
 
 #endif

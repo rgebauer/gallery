@@ -14,7 +14,7 @@
 +(NSArray *)imagesFromJSON:(NSData *)data error:(NSError **)error
 {
     NSString *unformattedData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    NSLog(@"%@", unformattedData);
+    //NSLog(@"%@", unformattedData);
     //NSLog(@"%d", [NSJSONSerialization isValidJSONObject:data]);
     
     NSMutableArray *ret = [[NSMutableArray alloc] init];
@@ -25,6 +25,7 @@
     
     dispatch_group_t group = dispatch_group_create();
     
+    //TODO optimize this and make better than O(n2)
     while (searchRange.location < unformattedData.length)
     {
         searchRange.length = unformattedData.length-searchRange.location;
@@ -37,11 +38,22 @@
             //NSLog(@"%@", substr);
             NSRange r2 = [substr rangeOfCharacterFromSet: [NSCharacterSet characterSetWithCharactersInString:@"\""]];
             NSString *s1 = [substr substringToIndex:r2.location-1];
+            NSString *s2 = @"";
             
             //NSLog(@"%@", s1);
+            //find alternative text
+            NSRange newSearchRange = NSMakeRange(searchRange.location, unformattedData.length-searchRange.location);
+            NSRange foundAltRange = [unformattedData rangeOfString:@"alt=" options:nil range:newSearchRange];
+            if (foundAltRange.location != NSNotFound)
+            {
+                NSString *substr = [unformattedData substringFromIndex:foundAltRange.location+foundAltRange.length+2];
+                NSRange r3 = [substr rangeOfCharacterFromSet: [NSCharacterSet characterSetWithCharactersInString:@"\""]];
+                s2 = [substr substringToIndex:r3.location-1];
+            }
             
             Image *image = [[Image alloc] init];
             image.url = s1;
+            image.altText = s2;
             
             //load images
             NSURL *imageURL = [NSURL URLWithString:image.url];

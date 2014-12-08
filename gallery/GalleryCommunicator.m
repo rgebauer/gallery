@@ -37,13 +37,13 @@
 
 @implementation GalleryCommunicator : NSObject
 
-- (void)searchImages:(NSString*)what
+- (void)searchImages:(NSString*)what from:(NSInteger)from
 {
-    int _step = 10;
-    int _from = 1;
+    int step = 20; //????
+    int fromRange = (int)from;
     
     //TODO set from, step, convert what to GET URL string
-    NSString *str_url = [[NSString stringWithFormat:@"http://obrazky.cz/searchAjax?q=%@&s=&step=%d&size=small&color=any&filter=true&from=%d", what, _step, _from] urlencode];
+    NSString *str_url = [[NSString stringWithFormat:@"http://obrazky.cz/searchAjax?q=%@&s=&step=%d&size=small&color=any&filter=true&from=%d", what, step, fromRange] urlencode];
     NSLog(@"%@", str_url);
     
     NSURL *url = [[NSURL alloc] initWithString:str_url];
